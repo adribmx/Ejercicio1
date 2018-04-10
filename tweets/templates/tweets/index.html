@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if latest_tweet_list %}
+        <ul>
+    {% for tweet in latest_tweet_list %}
+        <li><a href="{% url 'tweet_detail' tweet.id%}">{{ tweet.tweet_text }}</a> creado por <a href="{% url 'user_tweets' tweet.user.nick %}">{{ tweet.user.nick }}</a> </li>
+    {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay tweets en nuestro timeline.</p>
+    {% endif %}
+</body>
+</html>
